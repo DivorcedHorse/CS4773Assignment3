@@ -1,0 +1,6 @@
+Rectangle, Color: Red, Origin: (10,15), Width: 5, Height: 7
+Circle, Color: Blue, Origin: (7,7), Radius: 10
+ERROR: invalid shape for SELECT
+Rectangle, Color: Red, Origin: (10,15), Width: 5, Height: 7
+Circle, Color: Blue, Origin: (7,7), Radius: 10
+Circle, Color: Yellow, Origin: (10,10), Radius: 20
