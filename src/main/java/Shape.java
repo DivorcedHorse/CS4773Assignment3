@@ -1,23 +1,19 @@
 import java.awt.*;
 
 public abstract class Shape {
-
+    String shapeType;
     String color;
-    Point origin;
+    int xCord, yCord;
 
-    public Rectangle createRectangle(int x, int y) {
-        return new Rectangle(x, y);
-    }
 
-    public Circle createCircle(int r) {
-        return new Circle(r);
-    }
-
-    public void MOVE() {
+    public void MOVE(int x, int y) {
+        xCord = x;
+        yCord = y;
 
     }
 
-    public void COLOR() {
+    public void COLOR(String selectedColor) {
+        color = selectedColor;
 
     }
 
@@ -25,10 +21,7 @@ public abstract class Shape {
     public void DELETE() {
 
     }
-
-    public void DRAW() {
-
-    }
+    public abstract void DRAW();
 
     public void DRAWSCENE() {
 
