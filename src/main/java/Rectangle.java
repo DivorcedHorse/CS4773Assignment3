@@ -4,8 +4,8 @@ public class Rectangle extends Shape {
     int width;
 
     public Rectangle(int x, int y) {
-        height = x;
-        width = y;
+        width = x;
+        height = y;
         xCord = 0;
         yCord = 0;
         color = "Red";
@@ -14,7 +14,8 @@ public class Rectangle extends Shape {
 
     public void DRAW() {
         //Rectangle, Color: Red, Origin: (10,15), Width: 5, Height: 7
-        System.out.println(shapeType + ", Color: " + color + ", Origin: (" + xCord + "," + yCord +"), Width: " + width + ","+ height);
+        System.out.println(shapeType + ", Color: " + color + ", Origin: (" + xCord + "," + yCord +"), Width: "
+                + width + ", Height: " + height);
 
     }
 

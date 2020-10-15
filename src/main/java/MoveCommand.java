@@ -8,6 +8,5 @@ public class MoveCommand extends Command {
 
     public void execute(Shape shape) {
         shape.MOVE(xCord, yCord);
-
     }
 }

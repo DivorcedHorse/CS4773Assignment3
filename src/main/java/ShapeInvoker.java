@@ -19,5 +19,14 @@ public class ShapeInvoker {
     public void printHistory() {
         System.out.println(commandHistory);
     }
+
+    public Shape getShape() {
+        return currentShape;
+    }
+
+    public void setShape(Shape shape) {
+        currentShape = shape;
+    }
+
 }
 

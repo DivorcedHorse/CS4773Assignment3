@@ -21,13 +21,20 @@ public abstract class Shape {
     public void DELETE() {
 
     }
+
     public abstract void DRAW();
 
     public void DRAWSCENE() {
 
     }
 
+    public String getShapeType() {
+        return shapeType;
+    }
 
+    public void setShapeType(String shapeType) {
+        this.shapeType = shapeType;
+    }
 
     public String getColor() {
         return color;
@@ -35,5 +42,21 @@ public abstract class Shape {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public int getxCord() {
+        return xCord;
+    }
+
+    public void setxCord(int xCord) {
+        this.xCord = xCord;
+    }
+
+    public int getyCord() {
+        return yCord;
+    }
+
+    public void setyCord(int yCord) {
+        this.yCord = yCord;
     }
 }
