@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 
 public class Caretaker {
-    ArrayList<Memento> savedShapeStates = new ArrayList<>();
+    private ArrayList<Memento> savedShapeStates;
+
+    public Caretaker() {
+        savedShapeStates = new ArrayList<>();
+    }
 
     public void addMemento(Memento m) {
         savedShapeStates.add(m);

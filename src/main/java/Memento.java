@@ -1,7 +1,8 @@
 public class Memento {
-    String shapeType;
-    String color;
-    int xCord, yCord;
+    private String shapeType;
+    private String color;
+    private int xCord;
+    private int yCord;
 
     public Memento(String shape, String c, int x, int y) {
         shapeType = shape;

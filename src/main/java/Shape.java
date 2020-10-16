@@ -1,10 +1,7 @@
-import java.awt.*;
-
 public abstract class Shape {
     String shapeType;
     String color;
     int xCord, yCord;
-
 
     public void MOVE(int x, int y) {
         xCord = x;
@@ -17,9 +14,8 @@ public abstract class Shape {
 
     }
 
-
     public void DELETE() {
-
+        //shapeType = "NULL";
     }
 
     public abstract void DRAW();

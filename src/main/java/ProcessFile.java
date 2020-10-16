@@ -9,7 +9,7 @@ public class ProcessFile {
     static ShapeInvoker currShape = null;
     static Originator originator = new Originator();
     static Caretaker caretaker = new Caretaker();
-    static int careTakerIndex;
+    static int careTakerIndex = 0;
 
     public static void main(String[] args) {
         try {
@@ -61,8 +61,15 @@ public class ProcessFile {
                         careTakerIndex--;
                         originator.restoreMemento(caretaker.getMemento(careTakerIndex));
                         currShape.getShape().setColor(originator.getColor());
-                        currShape.getShape().setxCord(originator.xCord);
-                        currShape.getShape().setyCord(originator.yCord);
+                        currShape.getShape().setxCord(originator.getxCord());
+                        currShape.getShape().setyCord(originator.getyCord());
+                        careTakerIndex++;
+                        break;
+                    case "DELETE":
+                        originator.saveState(currShape.getShape());
+                        caretaker.addMemento(originator.storeMemento());
+                        careTakerIndex++;
+                        currShape.storeAndExecute(new DeleteCommand());
                         break;
                     default:
                         System.out.println("Invalid command");

@@ -1,7 +1,8 @@
 public class Originator {
-    String shapeType;
-    String color;
-    int xCord, yCord;
+    private String shapeType;
+    private String color;
+    private int xCord;
+    private int yCord;
 
     public void saveState(Shape shape) {
         shapeType = shape.getShapeType();
