@@ -1,3 +1,11 @@
+/**
+ * Memento by Daniel Tellez and Hao Tran
+ *
+ * Purpose:
+ *      Snapshot of originator state shape.  Stores
+ *      the current values of that shape at that given
+ *      time it was snapped.
+ */
 public class Memento {
     private String shapeType;
     private String color;
@@ -10,6 +18,8 @@ public class Memento {
         xCord = x;
         yCord = y;
     }
+
+    // ----- GETTERS
 
     public String getShapeType() {
         return shapeType;

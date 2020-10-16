@@ -1,28 +1,77 @@
+import java.util.ArrayList;
+
+/**
+ * Shape by Daniel Tellez and Hao Tran
+ *
+ * Purpose:
+ *      Receiver class for Command Design Pattern.
+ *      Abstract class that represents a default shape.
+ *      Has the command methods that will be invoked for
+ *      the given shape.
+ */
 public abstract class Shape {
-    String shapeType;
-    String color;
-    int xCord, yCord;
+    protected String shapeType;
+    protected String color;
+    protected int xCord;
+    protected int yCord;
 
-    public void MOVE(int x, int y) {
-        xCord = x;
-        yCord = y;
-
-    }
-
+    /**
+     * COLOR
+     *
+     * Purpose:
+     *      Changes the color for the shape.
+     *
+     * @param selectedColor - New color for shape
+     */
     public void COLOR(String selectedColor) {
         color = selectedColor;
-
     }
 
+    /**
+     * DELETE
+     *
+     * Purpose:
+     *      Deletes the shape.
+     */
     public void DELETE() {
         //shapeType = "NULL";
     }
 
+    /**
+     * DRAW
+     *
+     * Purpose:
+     *      Abstract so that each subclass of shape
+     *      can "draw" their own shape.
+     */
     public abstract void DRAW();
 
-    public void DRAWSCENE() {
-
+    /**
+     * DRAWSCENE
+     *
+     * Purpose:
+     *      Will draw the current shape and
+     *      all shapes in the drawing list.
+     */
+    public void DRAWSCENE(ArrayList<ShapeInvoker> shapes) {
+        for(ShapeInvoker shape : shapes) {
+            shape.getShape().DRAW();
+        }
     }
+
+    /**
+     * MOVE
+     *
+     * Purpose:
+     *      Moves the shapes coordinates.  Updates
+     *      their x and y position.
+     */
+    public void MOVE(int x, int y) {
+        xCord = x;
+        yCord = y;
+    }
+
+    // ------ GETTERS AND SETTERS --------
 
     public String getShapeType() {
         return shapeType;

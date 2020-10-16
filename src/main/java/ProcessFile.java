@@ -41,9 +41,7 @@ public class ProcessFile {
                         currShape.storeAndExecute(new DrawCommand());
                         break;
                     case "DRAWSCENE":
-                        for(ShapeInvoker shape : shapes){
-                            shape.storeAndExecute(new DrawSceneCommand());
-                        }
+                        currShape.storeAndExecute(new DrawSceneCommand(shapes));
                         break;
                     case "COLOR":
                         originator.saveState(currShape.getShape());

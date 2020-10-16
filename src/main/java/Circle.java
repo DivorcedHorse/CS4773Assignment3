@@ -1,21 +1,35 @@
+/**
+ * Circle by Daniel Tellez and Hao Tran
+ *
+ * Purpose:
+ *      Domain model that represents the shape Circle.
+ *      Stores simple attributes for a Circle.
+ */
 public class Circle extends Shape {
+    private int radius;
 
-    int radius;
-
-    public Circle(int r) {
-        radius = r;
-        xCord = 0;
-        yCord = 0;
+    public Circle(int newRadius) {
         color = "Blue";
         shapeType = "Circle";
+        radius = newRadius;
+        xCord = 0;
+        yCord = 0;
     }
 
+    /**
+     *  DRAW
+     *
+     *  Purpose:
+     *      Prints out the contents of the circle.
+     */
     public void DRAW() {
-        //Rectangle, Color: Red, Origin: (10,15), Width: 5, Height: 7
-        //Circle, Color: Blue, Origin: (7,7), Radius: 10
-        System.out.println(shapeType + ", Color: " + color + ", Origin: (" + xCord + "," + yCord +"), Radius: " + radius);
+        System.out.println(shapeType + ", Color: " + color
+                + ", Origin: (" + xCord + "," + yCord
+                +"), Radius: " + radius);
 
     }
+
+    // -------- GETTERS AND SETTERS -------------
 
     public int getRadius() {
         return radius;

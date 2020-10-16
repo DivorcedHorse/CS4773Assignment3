@@ -1,10 +1,18 @@
+/**
+ * MoveCommand by Daniel Tellez and Hao Tran
+ *
+ * Purpose:
+ *      Command class for moving the coordinates/points
+ *      of a shape.
+ */
+
 public class MoveCommand extends Command {
-    int xCord, yCord;
+    private int xCord;
+    private int yCord;
 
-    public MoveCommand(int x, int y){
-        xCord = x;
-        yCord = y;
-
+    public MoveCommand(int newXLocation, int newYLocation){
+        xCord = newXLocation;
+        yCord = newYLocation;
     }
 
     public void execute(Shape shape) {

@@ -1,3 +1,4 @@
+
 public class CreateRectangle extends Command {
 
     Rectangle newRec;
