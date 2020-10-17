@@ -6,12 +6,14 @@
  */
 
 public class DrawCommand extends Command {
+    Shape myShape;
+
     public DrawCommand(Shape shape) {
-        super(shape);
+        myShape = shape;
     }
 
     public void execute() {
-        shape.DRAW();
+        myShape.DRAW();
 
     }
 }

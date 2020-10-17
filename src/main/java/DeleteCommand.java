@@ -7,11 +7,14 @@
 
 
 public class DeleteCommand extends Command {
+    Shape myShape;
+
     public DeleteCommand(Shape shape) {
-        super(shape);
+        myShape = shape;
     }
 
     public void execute() {
-        shape.DELETE();
+
+        myShape.DELETE();
     }
 }

@@ -17,7 +17,6 @@ public class ShapeInvoker {
 
     public ShapeInvoker() {
         commandHistory = new ArrayList<Command>();
-        shapes = new ArrayList<Shape>();
     }
 
     /**
@@ -33,10 +32,6 @@ public class ShapeInvoker {
     public void storeAndExecute(Command command) {
         commandHistory.add(command);
         command.execute();
-    }
-
-    public void createShape(Command command) {
-        shapes.add(command.getShape());
     }
 
     /**

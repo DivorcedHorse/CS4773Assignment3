@@ -7,16 +7,17 @@
  */
 
 public class MoveCommand extends Command {
+    private Shape myShape;
     private int xCord;
     private int yCord;
 
     public MoveCommand(Shape shape, int newXLocation, int newYLocation) {
-        super(shape);
+        myShape = shape;
         xCord = newXLocation;
         yCord = newYLocation;
     }
 
     public void execute() {
-        shape.MOVE(xCord, yCord);
+        myShape.MOVE(xCord, yCord);
     }
 }

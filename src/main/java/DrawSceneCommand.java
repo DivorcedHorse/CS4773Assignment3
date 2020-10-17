@@ -10,10 +10,10 @@
 import java.util.ArrayList;
 
 public class DrawSceneCommand extends Command {
-    //private ArrayList<Shape> allShapes;
+    private ArrayList<Shape> allShapes;
 
     public DrawSceneCommand(ArrayList<Shape> passedShapes) {
-        super(passedShapes);
+        allShapes = passedShapes;
     }
 
     public void execute() {
