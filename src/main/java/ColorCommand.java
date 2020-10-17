@@ -7,11 +7,12 @@
 public class ColorCommand extends Command {
     String curColor;
 
-    public ColorCommand(String color){
+    public ColorCommand(Shape shape, String color) {
+        super(shape);
         curColor = color;
     }
 
-    public void execute(Shape shape) {
+    public void execute() {
         shape.COLOR(curColor);
 
     }

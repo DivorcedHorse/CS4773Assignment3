@@ -6,7 +6,11 @@
  */
 
 public class DrawCommand extends Command {
-    public void execute(Shape shape) {
+    public DrawCommand(Shape shape) {
+        super(shape);
+    }
+
+    public void execute() {
         shape.DRAW();
 
     }

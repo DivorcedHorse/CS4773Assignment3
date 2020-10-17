@@ -27,6 +27,15 @@ public abstract class Shape {
         color = selectedColor;
     }
 
+
+    public Shape CREATERECTANGLE(int x, int y) {
+        return new Rectangle(x,y);
+    }
+
+    public Shape CREATECIRLCE(int r) {
+        return new Circle(r);
+    }
+
     /**
      * DELETE
      *
@@ -52,11 +61,9 @@ public abstract class Shape {
      * Purpose:
      *      Will draw the current shape and
      *      all shapes in the drawing list.
-     */
-    public void DRAWSCENE(ArrayList<ShapeInvoker> shapes) {
-        for(ShapeInvoker shape : shapes) {
-            shape.getShape().DRAW();
-        }
+    */
+    public void DRAWSCENE(Shape shape) {
+        shape.DRAW();
     }
 
     /**

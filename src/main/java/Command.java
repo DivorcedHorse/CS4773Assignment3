@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Command by Daniel Tellez and Hao Tran
  *
@@ -7,19 +9,40 @@
  */
 
 public abstract class Command {
+    protected Shape shape;
+    protected ArrayList<Shape> allShapes;
+    protected int position;
 
-    /**
-     * execute
-     *
-     * Purpose:
-     *      The subclass command will execute corresponding
-     *      shape method.
-     * @param shape
-     */
-    public abstract void execute(Shape shape);
+    public Command(Shape newShape) {
+        shape = newShape;
+    }
+
+    public Command(ArrayList<Shape> allPassedShapes) {
+        allShapes = allPassedShapes;
+    }
+
+    public Command() {
+    }
+
+        /**
+         * execute
+         *
+         * Purpose:
+         *      The subclass command will execute corresponding
+         *      shape method.
+         */
+    public abstract void execute();
 
     @Override
     public String toString() {
         return this.getClass().getSimpleName();
+    }
+
+    public Shape getShape() {
+        return shape;
+    }
+
+    public void setShape(Shape shape) {
+        this.shape = shape;
     }
 }

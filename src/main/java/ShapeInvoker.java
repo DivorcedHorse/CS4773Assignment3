@@ -13,11 +13,11 @@ import java.util.List;
 public class ShapeInvoker {
 
     private List<Command> commandHistory;
-    private Shape currentShape;
+    private ArrayList<Shape> shapes;
 
-    public ShapeInvoker(Shape myShape) {
-        this.currentShape = myShape;
+    public ShapeInvoker() {
         commandHistory = new ArrayList<Command>();
+        shapes = new ArrayList<Shape>();
     }
 
     /**
@@ -32,7 +32,11 @@ public class ShapeInvoker {
      */
     public void storeAndExecute(Command command) {
         commandHistory.add(command);
-        command.execute(currentShape);
+        command.execute();
+    }
+
+    public void createShape(Command command) {
+        shapes.add(command.getShape());
     }
 
     /**
@@ -47,13 +51,12 @@ public class ShapeInvoker {
 
     // ----------- GETTERS AND SETTERS -------------
 
-    public Shape getShape() {
-        return currentShape;
+    public ArrayList<Shape> getShapes() {
+        return shapes;
     }
 
-    public void setShape(Shape shape) {
-        currentShape = shape;
+    public void setShapes(ArrayList<Shape> shapes) {
+        this.shapes = shapes;
     }
-
 }
 

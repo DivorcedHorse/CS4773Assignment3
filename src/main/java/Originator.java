@@ -12,7 +12,7 @@ public class Originator {
     private int xCord;
     private int yCord;
 
-    public void saveState(Shape shape) {
+    public void saveShapeState(Shape shape) {
         shapeType = shape.getShapeType();
         color = shape.getColor();
         xCord = shape.getxCord();
@@ -28,8 +28,8 @@ public class Originator {
      *
      * @return new Memento - snapshot of shape.
      */
-    public Memento storeMemento() {
-        return new Memento(shapeType, color,xCord,yCord);
+    public Memento createNewMemento() {
+        return new Memento(shapeType, color, xCord, yCord);
     }
 
     /**

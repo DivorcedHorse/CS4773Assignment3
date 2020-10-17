@@ -10,12 +10,13 @@ public class MoveCommand extends Command {
     private int xCord;
     private int yCord;
 
-    public MoveCommand(int newXLocation, int newYLocation){
+    public MoveCommand(Shape shape, int newXLocation, int newYLocation) {
+        super(shape);
         xCord = newXLocation;
         yCord = newYLocation;
     }
 
-    public void execute(Shape shape) {
+    public void execute() {
         shape.MOVE(xCord, yCord);
     }
 }

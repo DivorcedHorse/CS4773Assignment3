@@ -1,5 +1,9 @@
-public class SelectCommand extends Command {
-    public void execute(Shape shape) {
+/*public class SelectCommand extends Command {
+    public SelectCommand(int x) {
+        super(x);
+    }
+
+    public void execute() {
 
     }
-}
+}*/

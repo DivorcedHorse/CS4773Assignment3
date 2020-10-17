@@ -12,14 +12,14 @@ public class Memento {
     private int xCord;
     private int yCord;
 
-    public Memento(String shape, String c, int x, int y) {
-        shapeType = shape;
-        color = c;
-        xCord = x;
-        yCord = y;
+    public Memento(String saveShape, String saveColor, int saveXPos, int saveYPos) {
+        shapeType = saveShape;
+        color = saveColor;
+        xCord = saveXPos;
+        yCord = saveYPos;
     }
 
-    // ----- GETTERS
+    // ----- GETTERS --------
 
     public String getShapeType() {
         return shapeType;

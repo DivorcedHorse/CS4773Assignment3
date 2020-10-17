@@ -5,8 +5,13 @@
  *      Command class for deleting a shape.
  */
 
+
 public class DeleteCommand extends Command {
-    public void execute(Shape shape) {
+    public DeleteCommand(Shape shape) {
+        super(shape);
+    }
+
+    public void execute() {
         shape.DELETE();
     }
 }
