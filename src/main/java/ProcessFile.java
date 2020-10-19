@@ -3,15 +3,17 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// THIS CLASS IS OUR
 public class ProcessFile {
+    static ArrayList<Shape> shapes = new ArrayList<Shape>();
+    static ShapeInvoker shapeInvoker = new ShapeInvoker();
+    static Shape currentShape;
 
-    static ArrayList<ShapeInvoker> shapes = new ArrayList<ShapeInvoker>();
-    static ShapeInvoker currShape = null;
-    static ArrayList<Command> shapesCommands = new ArrayList<Command>();
-
+    static Originator originator = new Originator();
+    static Caretaker caretaker = new Caretaker();
+    static int careTakerIndex = 0;
 
     public static void main(String[] args) {
-
         try {
             File myObj = new File("../../InputSet1.txt");
             Scanner myReader = new Scanner(myObj);
@@ -24,36 +26,57 @@ public class ProcessFile {
                 switch (command){
                     case "CREATE":
                         if (lineParts[1].equals("RECTANGLE")){
-                        shapes.add(new ShapeInvoker(new Rectangle(Integer.parseInt(lineParts[2]),Integer.parseInt(lineParts[3]))));
+                            Rectangle tmp = new Rectangle(Integer.parseInt(lineParts[2]),Integer.parseInt(lineParts[3]));
+                            shapes.add(tmp);
                         }
                         if (lineParts[1].equals("CIRCLE")){
-                        shapes.add(new ShapeInvoker(new Circle(Integer.parseInt(lineParts[2]))));
+                            Circle tmp2 = new Circle(Integer.parseInt(lineParts[2]));
+                            shapes.add(tmp2);
                         }
                         break;
                     case "SELECT":
+
                         if(Integer.parseInt(lineParts[1]) > shapes.size()){
                             System.out.println("ERROR: Invalid shape for select");
                             break;
                         }
-                        currShape = shapes.get(Integer.parseInt(lineParts[1]) - 1);
-                        break;
-                    case "MOVE":
-                        currShape.storeAndExecute(new MoveCommand(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2])));
+                        currentShape = shapes.get(Integer.parseInt(lineParts[1]) - 1);
                         break;
                     case "DRAW":
-                        currShape.storeAndExecute(new DrawCommand());
+                        shapeInvoker.storeAndExecute(new DrawCommand(currentShape));
+                        break;
+
+                    case "DRAWSCENE":
+                        shapeInvoker.storeAndExecute(new DrawSceneCommand(shapes));
                         break;
                     case "COLOR":
-                        currShape.storeAndExecute(new ColorCommand(lineParts[1]));
+                        originator.saveShapeState(currentShape);
+                        caretaker.addMemento(originator.createNewMemento());
+                        careTakerIndex++;
+                        shapeInvoker.storeAndExecute(new ColorCommand(currentShape, lineParts[1]));
                         break;
-                    case "DELETE":
+                    case "MOVE":
+                        originator.saveShapeState(currentShape);
+                        caretaker.addMemento(originator.createNewMemento());
+                        careTakerIndex++;
+                        shapeInvoker.storeAndExecute(new MoveCommand(currentShape, Integer.parseInt(lineParts[1]),
+                                Integer.parseInt(lineParts[2])));
                         break;
-                    case "DRAWSCENE":
-                        for(ShapeInvoker shape : shapes){
-                            shape.storeAndExecute(new DrawSceneCommand());
-                        }
-                        break;
+
                     case "UNDO":
+                        careTakerIndex--;
+                        originator.restoreMemento(caretaker.getMemento(careTakerIndex));
+                        currentShape.setColor(originator.getColor());
+                        currentShape.setxCord(originator.getxCord());
+                        currentShape.setyCord(originator.getyCord());
+                        careTakerIndex++;
+                        break;
+
+                    case "DELETE":
+                        originator.saveShapeState(currentShape);
+                        caretaker.addMemento(originator.createNewMemento());
+                        careTakerIndex++;
+                        shapeInvoker.storeAndExecute(new DeleteCommand(currentShape));
                         break;
                     default:
                         System.out.println("Invalid command");
