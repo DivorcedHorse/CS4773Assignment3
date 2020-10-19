@@ -1,33 +1,92 @@
-import java.awt.*;
+import java.util.ArrayList;
 
+/**
+ * Shape by Daniel Tellez and Hao Tran
+ *
+ * Purpose:
+ *      Receiver class for Command Design Pattern.
+ *      Abstract class that represents a default shape.
+ *      Has the command methods that will be invoked for
+ *      the given shape.
+ */
 public abstract class Shape {
-    String shapeType;
-    String color;
-    int xCord, yCord;
+    protected String shapeType;
+    protected String color;
+    protected int xCord;
+    protected int yCord;
+
+    /**
+     * COLOR
+     *
+     * Purpose:
+     *      Changes the color for the shape.
+     *
+     * @param selectedColor - New color for shape
+     */
+    public void COLOR(String selectedColor) {
+        color = selectedColor;
+    }
 
 
+    public Shape CREATERECTANGLE(int x, int y) {
+        return new Rectangle(x,y);
+    }
+
+    public Shape CREATECIRLCE(int r) {
+        return new Circle(r);
+    }
+
+    /**
+     * DELETE
+     *
+     * Purpose:
+     *      Deletes the shape.
+     */
+    public void DELETE() {
+        //shapeType = "NULL";
+    }
+
+    /**
+     * DRAW
+     *
+     * Purpose:
+     *      Abstract so that each subclass of shape
+     *      can "draw" their own shape.
+     */
+    public abstract void DRAW();
+
+    /**
+     * DRAWSCENE
+     *
+     * Purpose:
+     *      Will draw the current shape and
+     *      all shapes in the drawing list.
+     */
+    public void DRAWSCENE(Shape shape) {
+        shape.DRAW();
+    }
+
+    /**
+     * MOVE
+     *
+     * Purpose:
+     *      Moves the shapes coordinates.  Updates
+     *      their x and y position.
+     */
     public void MOVE(int x, int y) {
         xCord = x;
         yCord = y;
-
     }
 
-    public void COLOR(String selectedColor) {
-        color = selectedColor;
+    // ------ GETTERS AND SETTERS --------
 
+    public String getShapeType() {
+        return shapeType;
     }
 
-
-    public void DELETE() {
-
+    public void setShapeType(String shapeType) {
+        this.shapeType = shapeType;
     }
-    public abstract void DRAW();
-
-    public void DRAWSCENE() {
-
-    }
-
-
 
     public String getColor() {
         return color;
@@ -35,5 +94,21 @@ public abstract class Shape {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public int getxCord() {
+        return xCord;
+    }
+
+    public void setxCord(int xCord) {
+        this.xCord = xCord;
+    }
+
+    public int getyCord() {
+        return yCord;
+    }
+
+    public void setyCord(int yCord) {
+        this.yCord = yCord;
     }
 }
