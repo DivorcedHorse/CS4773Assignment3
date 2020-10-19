@@ -1,13 +1,20 @@
+/**
+ * ColorCommand by Daniel Tellez and Hao Tran
+ *
+ * Purpose:
+ *      Command class for changing color.
+ */
 public class ColorCommand extends Command {
+    Shape myshape;
     String curColor;
 
-    public ColorCommand(String color){
+    public ColorCommand(Shape shape, String color) {
+        myshape = shape;
         curColor = color;
-
     }
 
-    public void execute(Shape shape) {
-        shape.COLOR(curColor);
+    public void execute() {
+        myshape.COLOR(curColor);
 
     }
 }
