@@ -21,3 +21,4 @@ public class MoveCommand extends Command {
         myShape.MOVE(xCord, yCord);
     }
 }
+
