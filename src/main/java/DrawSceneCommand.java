@@ -18,7 +18,8 @@ public class DrawSceneCommand extends Command {
 
     public void execute() {
         for (Shape shape : allShapes) {
-            shape.DRAWSCENE(shape);
+            if (shape.getIsAlive() == true)
+                shape.DRAWSCENE(shape);
         }
     }
 }

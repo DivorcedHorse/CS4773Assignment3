@@ -23,28 +23,34 @@ public class ProcessFile {
                 String[] lineParts = line.split(" ");
                 String command = lineParts[0];
 
-                switch (command){
+                switch (command) {
                     case "CREATE":
-                        if (lineParts[1].equals("RECTANGLE")){
-                           // shapeInvoker.storeAndExecute(new createCommand(new Rectangle(Integer.parseInt(lineParts[1]),
-                             //       Integer.parseInt(lineParts[2]))));
-                            Rectangle tmp = new Rectangle(Integer.parseInt(lineParts[2]),Integer.parseInt(lineParts[3]));
+                        if (lineParts[1].equals("RECTANGLE")) {
+                            Rectangle tmp = new Rectangle(Integer.parseInt(lineParts[2]), Integer.parseInt(lineParts[3]));
                             shapes.add(tmp);
+                            shapeInvoker.getShapes().add(tmp);
+                            shapeInvoker.storeAndExecute(new CreateCommand(tmp));
                         }
-                        if (lineParts[1].equals("CIRCLE")){
+                        if (lineParts[1].equals("CIRCLE")) {
                             Circle tmp2 = new Circle(Integer.parseInt(lineParts[2]));
                             shapes.add(tmp2);
+                            shapeInvoker.getShapes().add(tmp2);
+                            shapeInvoker.storeAndExecute(new CreateCommand(tmp2));
                         }
+
                         break;
                     case "SELECT":
-
-                        if(Integer.parseInt(lineParts[1]) > shapes.size()){
+                        if (Integer.parseInt(lineParts[1]) > shapes.size()) {
                             System.out.println("ERROR: Invalid shape for select");
                             break;
                         }
-
-                        //shapeInvoker.storeAndExecute(new SelectCommand(Integer.parseInt(lineParts[2])));
+                        Shape tmp = currentShape;
                         currentShape = shapes.get(Integer.parseInt(lineParts[1]) - 1);
+                        if (currentShape.isAlive == false) {
+                            System.out.println("ERROR: invalid shape for SELECT");
+                            currentShape = tmp;
+                        }
+                        shapeInvoker.storeAndExecute(new SelectCommand(Integer.parseInt(lineParts[1]) - 1));
                         break;
                     case "DRAW":
                         shapeInvoker.storeAndExecute(new DrawCommand(currentShape));
@@ -66,21 +72,36 @@ public class ProcessFile {
                         shapeInvoker.storeAndExecute(new MoveCommand(currentShape, Integer.parseInt(lineParts[1]),
                                 Integer.parseInt(lineParts[2])));
                         break;
-
                     case "UNDO":
-                        careTakerIndex--;
-                        originator.restoreMemento(caretaker.getMemento(careTakerIndex));
-                        currentShape.setColor(originator.getColor());
-                        currentShape.setxCord(originator.getxCord());
-                        currentShape.setyCord(originator.getyCord());
-                        careTakerIndex++;
+                        Command tmpCommand = shapeInvoker.getCommandHistory().pop();
+                        if (tmpCommand instanceof SelectCommand) {
+                            currentShape = shapeInvoker.getLastSelect();
+                        } else if (tmpCommand instanceof DeleteCommand) {
+                            currentShape = shapeInvoker.getShapes().get(shapeInvoker.getSelectHistory().peek().getIndex());
+                            currentShape.setAlive(true);
+                        } else if (tmpCommand instanceof CreateCommand) {
+                            currentShape = shapeInvoker.getShapes().get(shapeInvoker.getShapes().size() - 1);
+                            currentShape.setAlive(false);
+                            currentShape = null;
+                        } else if (tmpCommand instanceof DrawCommand || tmpCommand instanceof DrawSceneCommand) {
+                            break;
+                        } else {
+                            careTakerIndex--;
+                            originator.restoreMemento(caretaker.getMemento(careTakerIndex));
+                            currentShape.setColor(originator.getColor());
+                            currentShape.setxCord(originator.getxCord());
+                            currentShape.setyCord(originator.getyCord());
+                            currentShape.setAlive(originator.getIsAlive());
+                            careTakerIndex++;
+                        }
                         break;
-
                     case "DELETE":
                         originator.saveShapeState(currentShape);
                         caretaker.addMemento(originator.createNewMemento());
                         careTakerIndex++;
+
                         shapeInvoker.storeAndExecute(new DeleteCommand(currentShape));
+                        currentShape = null;
                         break;
                     default:
                         System.out.println("Invalid command");

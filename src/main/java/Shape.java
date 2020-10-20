@@ -14,6 +14,7 @@ public abstract class Shape {
     protected String color;
     protected int xCord;
     protected int yCord;
+    protected boolean isAlive;
 
     /**
      * COLOR
@@ -27,14 +28,10 @@ public abstract class Shape {
         color = selectedColor;
     }
 
-
-    public Shape CREATERECTANGLE(int x, int y) {
-        return new Rectangle(x,y);
+    public void CREATE() {
+        setAlive(true);
     }
 
-    public Shape CREATECIRLCE(int r) {
-        return new Circle(r);
-    }
 
     /**
      * DELETE
@@ -43,7 +40,7 @@ public abstract class Shape {
      *      Deletes the shape.
      */
     public void DELETE() {
-        //shapeType = "NULL";
+        setAlive(false);
     }
 
     /**
@@ -61,7 +58,7 @@ public abstract class Shape {
      * Purpose:
      *      Will draw the current shape and
      *      all shapes in the drawing list.
-    */
+     */
     public void DRAWSCENE(Shape shape) {
         shape.DRAW();
     }
@@ -110,5 +107,13 @@ public abstract class Shape {
 
     public void setyCord(int yCord) {
         this.yCord = yCord;
+    }
+
+    public boolean getIsAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
     }
 }

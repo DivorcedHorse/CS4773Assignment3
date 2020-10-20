@@ -11,12 +11,14 @@ public class Originator {
     private String color;
     private int xCord;
     private int yCord;
+    private boolean isAlive;
 
     public void saveShapeState(Shape shape) {
         shapeType = shape.getShapeType();
         color = shape.getColor();
         xCord = shape.getxCord();
         yCord = shape.getyCord();
+        isAlive = shape.getIsAlive();
     }
 
     /**
@@ -29,7 +31,7 @@ public class Originator {
      * @return new Memento - snapshot of shape.
      */
     public Memento createNewMemento() {
-        return new Memento(shapeType, color, xCord, yCord);
+        return new Memento(shapeType, color, xCord, yCord, isAlive);
     }
 
     /**
@@ -45,6 +47,7 @@ public class Originator {
         color = memento.getColor();
         xCord = memento.getxCord();
         yCord = memento.getyCord();
+        isAlive = memento.getIsAlive();
     }
 
     // ------------ GETTERS -----------------
@@ -63,6 +66,10 @@ public class Originator {
 
     public int getyCord() {
         return yCord;
+    }
+
+    public boolean getIsAlive() {
+        return isAlive;
     }
 
 }

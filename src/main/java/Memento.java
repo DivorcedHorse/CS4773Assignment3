@@ -11,12 +11,14 @@ public class Memento {
     private String color;
     private int xCord;
     private int yCord;
+    private boolean isAlive;
 
-    public Memento(String saveShape, String saveColor, int saveXPos, int saveYPos) {
+    public Memento(String saveShape, String saveColor, int saveXPos, int saveYPos, boolean saveAlive) {
         shapeType = saveShape;
         color = saveColor;
         xCord = saveXPos;
         yCord = saveYPos;
+        isAlive = saveAlive;
     }
 
     // ----- GETTERS --------
@@ -35,5 +37,9 @@ public class Memento {
 
     public int getyCord() {
         return yCord;
+    }
+
+    public boolean getIsAlive() {
+        return isAlive;
     }
 }

@@ -7,6 +7,7 @@
 public class ColorCommand extends Command {
     Shape myshape;
     String curColor;
+
     public ColorCommand(Shape shape, String color) {
         myshape = shape;
         curColor = color;
