@@ -16,6 +16,10 @@ public abstract class Shape {
     protected int yCord;
     protected boolean isAlive;
 
+
+
+    protected boolean isSelected;
+
     /**
      * COLOR
      *
@@ -31,6 +35,7 @@ public abstract class Shape {
     public void CREATE() {
         setAlive(true);
     }
+
 
 
     /**
@@ -75,6 +80,10 @@ public abstract class Shape {
         yCord = y;
     }
 
+    public void SELECT() {
+        setSelected(true);
+    }
+
     // ------ GETTERS AND SETTERS --------
 
     public String getShapeType() {
@@ -115,5 +124,17 @@ public abstract class Shape {
 
     public void setAlive(boolean alive) {
         isAlive = alive;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 }

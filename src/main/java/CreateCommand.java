@@ -1,12 +1,28 @@
 public class CreateCommand extends Command {
-    Shape myShape;
+    ShapeInvoker shapes;
+    String shapeInfo;
 
-    public CreateCommand(Shape shape) {
-
-        myShape = shape;
+    public CreateCommand(String shapeInfo, ShapeInvoker shapes) {
+        this.shapeInfo = shapeInfo;
+        this.shapes = shapes;
     }
 
+
     public void execute() {
-        myShape.CREATE();
+        String[] shapeInfoParts = shapeInfo.split(" ");
+
+        if (shapeInfoParts[1].equals("RECTANGLE")){
+            Rectangle newRec = new Rectangle(Integer.parseInt(shapeInfoParts[2]),Integer.parseInt(shapeInfoParts[3]));
+            shapes.getShapes().add(newRec);
+            newRec.CREATE();
+        }
+
+        if (shapeInfoParts[1].equals("CIRCLE")){
+            Circle newCir = new Circle(Integer.parseInt(shapeInfoParts[2]));
+            shapes.getShapes().add(newCir);
+            newCir.CREATE();
+        }
+
+
     }
 }

@@ -12,6 +12,7 @@ public class Originator {
     private int xCord;
     private int yCord;
     private boolean isAlive;
+    private boolean isSelected;
 
     public void saveShapeState(Shape shape) {
         shapeType = shape.getShapeType();
@@ -19,6 +20,7 @@ public class Originator {
         xCord = shape.getxCord();
         yCord = shape.getyCord();
         isAlive = shape.getIsAlive();
+        isSelected = shape.isSelected();
     }
 
     /**
@@ -31,7 +33,7 @@ public class Originator {
      * @return new Memento - snapshot of shape.
      */
     public Memento createNewMemento() {
-        return new Memento(shapeType, color, xCord, yCord, isAlive);
+        return new Memento(shapeType, color, xCord, yCord, isAlive, isSelected);
     }
 
     /**
@@ -48,6 +50,7 @@ public class Originator {
         xCord = memento.getxCord();
         yCord = memento.getyCord();
         isAlive = memento.getIsAlive();
+        isSelected = memento.isSelected();
     }
 
     // ------------ GETTERS -----------------
@@ -71,5 +74,10 @@ public class Originator {
     public boolean getIsAlive() {
         return isAlive;
     }
+
+    public boolean getIsSelected() {
+        return isSelected;
+    }
+
 
 }

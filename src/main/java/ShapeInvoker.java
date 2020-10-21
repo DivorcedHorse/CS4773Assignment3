@@ -16,6 +16,7 @@ public class ShapeInvoker {
     private Stack<Command> commandHistory;
     private Stack<SelectCommand> selectHistory;
     private ArrayList<Shape> shapes;
+    private Shape currentShape;
 
     public ShapeInvoker() {
         commandHistory = new Stack<>();
@@ -92,4 +93,14 @@ public class ShapeInvoker {
     public void setSelectHistory(Stack<SelectCommand> selectHistory) {
         this.selectHistory = selectHistory;
     }
+
+
+    public Shape getCurrentShape() {
+        return currentShape;
+    }
+
+    public void setCurrentShape(Shape currentShape) {
+        this.currentShape = currentShape;
+    }
+
 }

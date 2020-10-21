@@ -13,6 +13,10 @@ public class DrawCommand extends Command {
     }
 
     public void execute() {
+        if(myShape == null){
+            System.out.println("ERROR: no currently selected shape");
+            return;
+        }
         myShape.DRAW();
 
     }
