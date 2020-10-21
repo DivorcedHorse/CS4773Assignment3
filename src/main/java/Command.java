@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Command by Daniel Tellez and Hao Tran
  *

@@ -8,11 +8,9 @@
  *      Commands execute
  */
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 public class ShapeInvoker {
-
     private Stack<Command> commandHistory;
     private Stack<SelectCommand> selectHistory;
     private ArrayList<Shape> shapes;
@@ -37,11 +35,43 @@ public class ShapeInvoker {
     public void storeAndExecute(Command command) {
         if (command instanceof SelectCommand) {
             selectHistory.add((SelectCommand) command);
-            //printHistory();
-            //System.out.println(((SelectCommand) command).index + "\n\n");
         }
         commandHistory.add(command);
         command.execute();
+    }
+
+    /**
+     * getLastSelect
+     *
+     * Purpose:
+     *      Returns the shape of the previously
+     *      selected command (undo select).
+     *
+     * @return - Shape
+     */
+    public Shape getLastSelect() {
+        if (selectHistory.size() >= 2) {
+            selectHistory.pop();
+            SelectCommand tmp = selectHistory.pop();
+
+            int index = tmp.getIndex();
+
+            return shapes.get(index);
+        }
+        else {
+            return null;
+        }
+    }
+
+    /**
+     * getSelectHistoryIndex
+     *
+     * Purpose:
+     *      Returns the index of the last selected shape.
+     * @return
+     */
+    public int getSelectHistoryIndex() {
+        return selectHistory.peek().getIndex();
     }
 
     /**
@@ -52,19 +82,6 @@ public class ShapeInvoker {
      */
     public void printHistory() {
         System.out.println(selectHistory);
-    }
-
-    public Shape getLastSelect() {
-        if (selectHistory.size() >= 2) {
-            selectHistory.pop();
-            SelectCommand tmp = selectHistory.pop();
-            int index = tmp.getIndex();
-            //System.out.println(index + "@");
-            return shapes.get(index);
-        }
-        else {
-            return null;
-        }
     }
 
     // ----------- GETTERS AND SETTERS -------------
@@ -102,5 +119,4 @@ public class ShapeInvoker {
     public void setCurrentShape(Shape currentShape) {
         this.currentShape = currentShape;
     }
-
 }

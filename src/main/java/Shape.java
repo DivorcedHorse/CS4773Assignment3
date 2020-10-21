@@ -15,9 +15,6 @@ public abstract class Shape {
     protected int xCord;
     protected int yCord;
     protected boolean isAlive;
-
-
-
     protected boolean isSelected;
 
     /**
@@ -32,10 +29,17 @@ public abstract class Shape {
         color = selectedColor;
     }
 
+    /**
+     * CREATE
+     *
+     * Purpose:
+     *      Makes the shape "Alive".  The
+     *      shape has been created.
+     *
+     */
     public void CREATE() {
         setAlive(true);
     }
-
 
 
     /**
@@ -80,6 +84,13 @@ public abstract class Shape {
         yCord = y;
     }
 
+    /**
+     * SELECT
+     *
+     * Purpose:
+     *      Tags the current shape as the currently
+     *      selected shape.
+     */
     public void SELECT() {
         setSelected(true);
     }

@@ -1,3 +1,11 @@
+/**
+ * SelectCommand by Daniel Tellez and Hao Tran
+ *
+ * Purpose:
+ *      SelectCommand will select the correct shape
+ *      in the drawinglist as the shape that will
+ *      be "changed" with the other commands.
+ */
 public class SelectCommand extends Command {
     int index;
     String selectInfo;
@@ -18,10 +26,10 @@ public class SelectCommand extends Command {
             System.out.println("ERROR: invalid shape for SELECT");
             shapes.setCurrentShape(tmp);
         }
-
-
-
+        shapes.getCurrentShape().SELECT();
     }
+
+    // ------------ GETTERS AND SETTERS --------------
 
     public int getIndex() {
         return index;
@@ -29,5 +37,21 @@ public class SelectCommand extends Command {
 
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    public String getSelectInfo() {
+        return selectInfo;
+    }
+
+    public void setSelectInfo(String selectInfo) {
+        this.selectInfo = selectInfo;
+    }
+
+    public ShapeInvoker getShapes() {
+        return shapes;
+    }
+
+    public void setShapes(ShapeInvoker shapes) {
+        this.shapes = shapes;
     }
 }

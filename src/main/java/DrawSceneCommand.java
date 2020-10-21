@@ -5,8 +5,6 @@
  *      Draws/outputs the contents of all shapes
  *      in the drawing list.
  */
-
-
 import java.util.ArrayList;
 
 public class DrawSceneCommand extends Command {

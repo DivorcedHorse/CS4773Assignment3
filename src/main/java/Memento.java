@@ -12,13 +12,6 @@ public class Memento {
     private int xCord;
     private int yCord;
     private boolean isAlive;
-
-
-
-    public boolean isSelected() {
-        return isSelected;
-    }
-
     private boolean isSelected;
 
     public Memento(String saveShape, String saveColor, int saveXPos, int saveYPos, boolean saveAlive, boolean saveSelected) {
@@ -51,7 +44,6 @@ public class Memento {
     public boolean getIsAlive() {
         return isAlive;
     }
-
 
     public boolean getIsSelected() {
         return isSelected;

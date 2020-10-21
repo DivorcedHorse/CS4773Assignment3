@@ -50,7 +50,7 @@ public class Originator {
         xCord = memento.getxCord();
         yCord = memento.getyCord();
         isAlive = memento.getIsAlive();
-        isSelected = memento.isSelected();
+        isSelected = memento.getIsSelected();
     }
 
     // ------------ GETTERS -----------------
