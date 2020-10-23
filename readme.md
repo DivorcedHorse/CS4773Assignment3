@@ -1,4 +1,4 @@
-Assignment3 by Hao Tran and Daniel Tellez
+# Assignment3 by Hao Tran and Daniel Tellez
 
 Purpose: <br>
   In this assignment, you will design and build a program that stores an arbitrary
@@ -11,9 +11,24 @@ Purpose: <br>
   pts.
   
   
-Design Patterns Used:<br>
-  - Command Pattern:<br>
-    -- Our Command Pattern implementation included the following classes:<br>
-       ProcessFile.java - The client class that will ...<br>
-       ShapeInvoker.java - The <br>
+## Design Patterns Used:
+* Command Pattern - Our Command Pattern implementation included the following classes:<br>
+  * ProcessFile.java - The Client class that will responsible for creating the Invoker and creating the new commands.
+  * ShapeInvoker.java - The Invoker class that is responsible for storing and executing the commands for the shapes.
+  * Shape.java - The receiver class that defines the methods/commands used by a shape.
+  * Command.java - The abstract Command class that defines the default method, execute(), used by all subcommands. Commands include:
+    * ColorCommand.java - Command that changes the shapes color.
+    * CreateCommand.java - Command that is responsible for creating a new Shape subclass.
+    * DeleteCommand.java - Command that "deletes" a shape from the drawinglist.
+    * DrawCommand.java - Command that prints/draws the contents of a shape.
+    * DrawSceneCommand.java - Command that draws all shapes from the drawinglist.
+    * MoveCommand.java - Command that changes the coordinates of a given shape.
+    * SelectCommand.java - Command that selects and sets the current shape being used.
+    
+* Memento Pattern - 
+
+* Strategy Pattern - 
+ 
+    
+  
        
