@@ -1,6 +1,6 @@
 Assignment3 by Hao Tran and Daniel Tellez
 
-Purpose:
+Purpose: <br>
   In this assignment, you will design and build a program that stores an arbitrary
   sequence of commands that manipulates and uses a drawing list. A drawing list is used
   to produce a graphical scene, e.g., [create a red rectangle, move it to coordinates (5,5),
@@ -11,7 +11,9 @@ Purpose:
   pts.
   
   
-Design Patterns:
-  Command Pattern:
-    Our Command Pattern implementation included the following classes:
-      
+Design Patterns Used:<br>
+  - Command Pattern:<br>
+    -- Our Command Pattern implementation included the following classes:<br>
+       ProcessFile.java - The client class that will ...<br>
+       ShapeInvoker.java - The <br>
+       
