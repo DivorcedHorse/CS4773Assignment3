@@ -1,6 +1,6 @@
 # Assignment3 by Hao Tran and Daniel Tellez
 
-Purpose: <br>
+**Purpose:**  <br>
   In this assignment, you will design and build a program that stores an arbitrary
   sequence of commands that manipulates and uses a drawing list. A drawing list is used
   to produce a graphical scene, e.g., [create a red rectangle, move it to coordinates (5,5),
@@ -25,7 +25,11 @@ Purpose: <br>
     * MoveCommand.java - Command that changes the coordinates of a given shape.
     * SelectCommand.java - Command that selects and sets the current shape being used.
     
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
 * Memento Pattern - 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 * Strategy Pattern - 
  
