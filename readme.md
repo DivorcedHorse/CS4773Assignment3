@@ -27,7 +27,10 @@
     
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
-* Memento Pattern - 
+* Memento Pattern -  Our Menemto Pattern implementation included the following classes:
+  * Menemto.java -  gets a snapshot of originator state (shapeType, color, xCord, yCord, isAlive, isSelected).
+  * Originator.java - Keeps shapes internal state that we want to save to return to later.
+  * Caretaker.java - keeps track of multiple memento(saved states), so that whenever a shape needs to go back to a previous state it has the infomation to do so.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
