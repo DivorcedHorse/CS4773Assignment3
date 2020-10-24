@@ -34,7 +34,10 @@
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-* Strategy Pattern - 
+* Strategy Pattern - Our Strategy Pattern implementation included the following classes:
+  * Shapes.java - This class contains instance variables and methods(commands) that every shape should have. 
+  * Rectangle.java - The Rectangle class inherits every method from the Shapes.java class but has its own stategy(behavoir) to draw the shape since a rectange contains a width     and height while some others do not. 
+  * Circle.java - The Circle class inherits every method from the Shapes.java class but has its own stategy(behavior) to draw the shape since a Circle contains a radius while     some others do not. 
  
     
   
