@@ -23,6 +23,9 @@ public class ProcessFile {
      * main
      *
      * Purpose:
+     *      Reads an input file until an empty line occurs.
+     *      Parses the line and passes it into determineAndExecute
+     *      which determines what command should be created.
      *
      * @param args
      */
@@ -73,7 +76,7 @@ public class ProcessFile {
             case "SELECT":
                 int selectIndex = Integer.parseInt(commandParts[1]);
                 if (selectIndex > shapeInvoker.getShapes().size()) {
-                    System.out.println("ERROR: Invalid shape for select");
+                    System.out.println("ERROR: Invalid shape for SELECT");
                     break;
                 }
                 shapeInvoker.storeAndExecute(new SelectCommand(selectIndex - 1, commandText, shapeInvoker));

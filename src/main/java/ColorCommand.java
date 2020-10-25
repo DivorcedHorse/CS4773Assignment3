@@ -5,16 +5,15 @@
  *      Command class for changing color.
  */
 public class ColorCommand extends Command {
-    Shape myshape;
+    Shape myShape;
     String curColor;
 
     public ColorCommand(Shape shape, String color) {
-        myshape = shape;
+        myShape = shape;
         curColor = color;
     }
 
     public void execute() {
-        myshape.COLOR(curColor);
-
+        myShape.COLOR(curColor);
     }
 }

@@ -12,8 +12,9 @@ public abstract class Command {
      * execute
      *
      * Purpose:
-     *      The subclass command will execute corresponding
-     *      shape method.
+     *      The subclass command will execute its unique
+     *      shape method/command that will change/affect
+     *      properties of given shape.
      */
     public abstract void execute();
 

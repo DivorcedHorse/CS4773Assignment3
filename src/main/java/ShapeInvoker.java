@@ -5,7 +5,7 @@
  *      calls storeAndExecute() on the command, and can do
  *      other things with Commands, like swapping them out,
  *      bookkeeping, logging, and determine when
- *      Commands execute
+ *      Commands execute. Our drawingList.
  */
 import java.util.ArrayList;
 import java.util.Stack;

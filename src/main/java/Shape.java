@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Shape by Daniel Tellez and Hao Tran
  *

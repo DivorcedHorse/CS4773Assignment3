@@ -38,7 +38,5 @@ public class CreateCommand extends Command {
             shapes.getShapes().add(newCir);
             newCir.CREATE();
         }
-
-
     }
 }
