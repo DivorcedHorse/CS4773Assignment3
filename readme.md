@@ -24,6 +24,7 @@
     * DrawSceneCommand.java - Command that draws all shapes from the drawinglist.
     * MoveCommand.java - Command that changes the coordinates of a given shape.
     * SelectCommand.java - Command that selects and sets the current shape being used.
+    * UndoCommand.java - Command that undos/reverts the last command.
     
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
