@@ -47,4 +47,8 @@ public class Rectangle extends Shape {
     public void setWidth(int width) {
         this.width = width;
     }
+
+    public String getColor() {
+        return color;
+    }
 }

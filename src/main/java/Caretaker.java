@@ -11,9 +11,11 @@ import java.util.ArrayList;
 
 public class Caretaker {
     private ArrayList<Memento> savedShapeStates;
+    private int careTakerIndex;
 
     public Caretaker() {
         savedShapeStates = new ArrayList<>();
+        careTakerIndex = 0;
     }
 
     /**
@@ -25,11 +27,14 @@ public class Caretaker {
      * @param m
      */
     public void addMemento(Memento m) {
+        careTakerIndex++;
         savedShapeStates.add(m);
     }
 
-    // ---------- GETTER ---------------
-    public Memento getMemento(int index) {
-        return savedShapeStates.get(index);
+    public Memento getMemento() {
+        careTakerIndex--;
+        Memento tmp = savedShapeStates.get(careTakerIndex);
+        savedShapeStates.remove(careTakerIndex);
+        return tmp;
     }
 }

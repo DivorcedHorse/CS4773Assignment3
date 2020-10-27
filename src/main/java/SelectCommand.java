@@ -25,6 +25,7 @@ public class SelectCommand extends Command {
         if (shapes.getCurrentShape().isAlive == false) {
             System.out.println("ERROR: invalid shape for SELECT");
             shapes.setCurrentShape(tmp);
+            return;
         }
         shapes.getCurrentShape().SELECT();
     }

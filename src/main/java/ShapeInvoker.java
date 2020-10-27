@@ -40,6 +40,10 @@ public class ShapeInvoker {
         command.execute();
     }
 
+    public void executeUndo(UndoCommand command) {
+        command.execute();
+    }
+
     /**
      * getLastSelect
      *

@@ -9,15 +9,12 @@
  */
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ProcessFile {
     static ShapeInvoker shapeInvoker = new ShapeInvoker();
     static Originator originator = new Originator();
     static Caretaker caretaker = new Caretaker();
-    static ArrayList<Shape> shapes = shapeInvoker.getShapes();
-    static int careTakerIndex = 0;
 
     /**
      * main
@@ -82,49 +79,16 @@ public class ProcessFile {
                 shapeInvoker.storeAndExecute(new SelectCommand(selectIndex - 1, commandText, shapeInvoker));
                 break;
             case "UNDO":
-                undoCommand();
+                shapeInvoker.executeUndo(new UndoCommand(shapeInvoker, originator, caretaker));
                 break;
             default:
                 System.out.println("Invalid command");
         }
     }
 
-    private static void undoCommand() {
-        Command tmpCommand = shapeInvoker.getCommandHistory().pop();
-
-        if (tmpCommand instanceof SelectCommand) {
-            shapeInvoker.setCurrentShape(shapeInvoker.getLastSelect());
-
-        } else if (tmpCommand instanceof DeleteCommand) {
-            shapeInvoker.setCurrentShape(shapes.get(shapeInvoker.getSelectHistoryIndex()));
-            shapeInvoker.getCurrentShape().setAlive(true);
-
-        } else if (tmpCommand instanceof CreateCommand) {
-            shapeInvoker.setCurrentShape(shapes.get(shapeInvoker.getShapes().size() - 1));
-            shapeInvoker.getCurrentShape().setAlive(false);
-            shapeInvoker.setCurrentShape(null);
-
-        } else if (tmpCommand instanceof DrawCommand || tmpCommand instanceof DrawSceneCommand) {
-            return;
-        } else {
-            restoreShapeState();
-        }
-    }
-
-    private static void restoreShapeState() {
-        careTakerIndex--;
-        originator.restoreMemento(caretaker.getMemento(careTakerIndex));
-        shapeInvoker.getCurrentShape().setColor(originator.getColor());
-        shapeInvoker.getCurrentShape().setxCord(originator.getxCord());
-        shapeInvoker.getCurrentShape().setyCord(originator.getyCord());
-        shapeInvoker.getCurrentShape().setAlive(originator.getIsAlive());
-        shapeInvoker.getCurrentShape().setSelected(originator.getIsSelected());
-    }
-
     private static void saveCurrentShape() {
         originator.saveShapeState(shapeInvoker.getCurrentShape());
         caretaker.addMemento(originator.createNewMemento());
-        careTakerIndex++;
-    }
 
+    }
 }

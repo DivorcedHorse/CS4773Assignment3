@@ -38,4 +38,8 @@ public class Circle extends Shape {
     public void setRadius(int radius) {
         this.radius = radius;
     }
+
+    public String getColor() {
+        return color;
+    }
 }
